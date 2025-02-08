@@ -3,12 +3,7 @@ import { useState, useEffect } from "react";
 import Hero from "@/components/hero";
 import Grid from "@/components/grid";
 import { FloatingNav } from "@/components/ui/FloatingNav";
-import RecentProjects from "@/components/RecentProjects";
 import { navItems } from "@/data";
-import Clients from "@/components/Clients";
-import Experience from "@/components/Experience";
-import Ideals from "@/components/ideals";
-import Footer from "@/components/footer";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,11 +33,6 @@ export default function Home() {
           <div className="max-w-7xl w-full">
             <Hero />
             <Grid />
-            <RecentProjects />
-            <Clients />
-            <Experience />
-            <Ideals />
-            <Footer />
           </div>
         </>
       )}

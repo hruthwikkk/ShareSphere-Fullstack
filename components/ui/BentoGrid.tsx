@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { cn } from "@/utils/cn";
 import { BackgroundGradientAnimation } from "./GradientBg";
-import { MapElement } from './MapElement'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Lottie from "react-lottie";
 import { Fascinate } from "next/font/google";
@@ -147,9 +146,7 @@ export const BentoGridItem = ({
 
 
                     <div className="group-hover/bento:translate-x-1 transition duration-200">
-                        <div className="justify-center items-center flex flex-col h-full w-full">
-                            {id === 2 && <MapElement />}
-                        </div>
+                        
 
                     </div>
 
