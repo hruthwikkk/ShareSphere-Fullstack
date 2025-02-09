@@ -4,6 +4,7 @@ import Hero from "@/components/hero";
 import Grid from "@/components/grid";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { navItems } from "@/data";
+
 import Categories from "@/components/ui/Categories";
 
 export default function Home() {
@@ -34,7 +35,7 @@ export default function Home() {
           <div className="max-w-7xl w-full">
             <Hero />
             <Grid />
-            <Categories/>
+            <Categories />
           </div>
         </>
       )}
