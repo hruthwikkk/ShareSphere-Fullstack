@@ -33,7 +33,7 @@ public class AuthService {
      */
     public SignupResponse signup(SignupRequest signupRequest) {
         // Validate that the email is within the allowed domain (e.g., @university.edu)
-        if (!signupRequest.getEmail().endsWith("@university.edu")) {
+        if (!signupRequest.getEmail().endsWith("@ncsu.edu")) {
             throw new RuntimeException("Invalid email domain; please use your university email.");
         }
 
