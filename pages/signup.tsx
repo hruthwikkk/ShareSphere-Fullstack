@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Label } from "../components/ui/Label";
 import { Input } from "../components/ui/Input";
 import { cn } from "@/utils/cn";
@@ -7,49 +7,110 @@ import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import { useRouter } from "next/navigation"; // Correct import for client-side routing
 
 const SignUp: React.FC = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        age: '',
+        email: '',
+        phone: '',
+        password: ''
+    });
+
     const router = useRouter();
 
     useEffect(() => {
         document.documentElement.classList.add("dark");
     }, []);
 
+    // New onChange handler to update form data properly
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    // Handle form submission (for now, just logs and navigates)
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Form submitted");
+
+        // Validate that the email ends with '@ncsu.edu'
+        if (!formData.email.endsWith("@ncsu.edu")) {
+            alert("Please use your university email (@ncsu.edu).");
+            return;
+        }
+
+        console.log("Submitting signup data:", formData);
+        // Redirect to home page (adjust as needed)
+        router.push("/home");
     };
 
     return (
         <div className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.01] bg-grid-black/[0.1] flex items-center justify-center">
             <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
                 <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-                    Welcome to Aceternity
+                    Welcome to ShareSphere
                 </h2>
                 <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-                    Login to aceternity if you can because we don&apos;t have a login flow yet.
+                    Where Campus Connects and Resources Flow.
                 </p>
 
                 <form className="my-8" onSubmit={handleSubmit}>
                     <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
                         <LabelInputContainer>
-                            <Label htmlFor="firstname">First name</Label>
-                            <Input id="firstname" placeholder="Tyler" type="text" />
+                            <Label htmlFor="firstname">Name</Label>
+                            <Input
+                                id="firstname"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Tyler"
+                                type="text"
+                            />
                         </LabelInputContainer>
                         <LabelInputContainer>
-                            <Label htmlFor="lastname">Last name</Label>
-                            <Input id="lastname" placeholder="Durden" type="text" />
+                            <Label htmlFor="age">How old are you?</Label>
+                            <Input
+                                id="age"
+                                name="age"
+                                value={formData.age}
+                                onChange={handleChange}
+                                placeholder="18"
+                                type="number"
+                            />
                         </LabelInputContainer>
                     </div>
                     <LabelInputContainer className="mb-4">
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
+                        <Label htmlFor="email">Email Address (only @ncsu.edu allowed)</Label>
+                        <Input
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="iAmAWizard@ncsu.edu"
+                            type="email"
+                        />
+                    </LabelInputContainer>
+                    <LabelInputContainer className="mb-4">
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input
+                            id="phone"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="0000000000"
+                            type="phone"
+                        />
                     </LabelInputContainer>
                     <LabelInputContainer className="mb-4">
                         <Label htmlFor="password1">Password</Label>
-                        <Input id="password1" placeholder="••••••••" type="password" />
-                    </LabelInputContainer>
-                    <LabelInputContainer className="mb-8">
-                        <Label htmlFor="password2">Your Twitter Password</Label>
-                        <Input id="password2" placeholder="••••••••" type="password" />
+                        <Input
+                            id="password1"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder="••••••••"
+                            type="password"
+                        />
                     </LabelInputContainer>
 
                     <button
@@ -59,13 +120,6 @@ const SignUp: React.FC = () => {
                         Sign up &rarr;
                         <BottomGradient />
                     </button>
-
-                    <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-
-                    <div className="flex flex-col space-y-4">
-                        <OAuthButton icon={<IconBrandGithub />} label="GitHub" />
-                        <OAuthButton icon={<IconBrandGoogle />} label="Google" />
-                    </div>
                 </form>
             </div>
         </div>
