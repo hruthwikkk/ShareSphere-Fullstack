@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Priya's Portfolio",
-  description: "WELCOME TO A SIMPLE YET IMPACTFUL PORTFOLIO",
+  title: "Share Sphere",
+  description: "WELCOME TO A SIMPLE YET IMPACTFUL APPLICATION",
 };
 
 export default function RootLayout({

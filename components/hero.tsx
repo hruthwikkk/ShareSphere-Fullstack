@@ -16,16 +16,23 @@ const Hero = () => {
                         <Spotlight className='-top-10 -left-full h-[80vh] w-[50vw]' fill="red" />
                         <Spotlight className='top-28 left-80 h-[88vh] w-[50vw]' fill="pink" />
 
-                        { <TextGenerateEffect className='text-center text-[40px] md:text-5xl lg:text-6xl' words='ShareSphere' /> }
+                        {<TextGenerateEffect className='text-center text-[40px] md:text-5xl lg:text-6xl' words='ShareSphere' />}
                         <h1 className="text-center text-bold text-[40px] md:text-5xl lg:text-6xl">
                             <span className="text-center text-[40px] text-bold md:text-5xl lg:text-6xl text-pink-500">Where Campus Connects and Resources Flow</span>
                         </h1>
                         <p className='text-center md:tracking-wider mt-4 mb-4 text-sm md:text-lg lg:text-2xl'> Welcome to ShareSphere!
-                        ShareSphere is your enchanted hub for sharing resources, skills, and opportunities across campus.
+                            ShareSphere is your enchanted hub for sharing resources, skills, and opportunities across campus.
                         </p>
                         <a href='#about'>
-                            <span className='m-8'><LitUpButton title="Sign Up" position='right'/></span>
-                            <span className='m-8'><LitUpButton title="Login" position='right'/></span>
+                            <a href='/signup'>
+                                < span className='m-8'>
+                                    <LitUpButton title="Sign Up" position='right' />
+                                </span></a>
+                            <span className='m-8'>
+                                <a href='/login'>
+                                    <LitUpButton title="Login" position='right' />
+                                </a>
+                            </span>
                         </a>
                     </div>
                 </div>
