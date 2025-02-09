@@ -2,6 +2,7 @@ import React from 'react'
 import { Spotlight } from './ui/spotlight'
 import { TextGenerateEffect } from './ui/textGenerateEffect'
 import LitUpButton from './ui/litUpButton'
+import SignUp from '@/pages/signup'
 
 const Hero = () => {
     return (
@@ -34,8 +35,6 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-
-
         </div>
 
     )
