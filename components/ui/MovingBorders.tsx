@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/utils/cn";
+import { useRouter } from "next/router";
 
 export function Button({
     borderRadius = "1.25rem",
@@ -19,6 +20,7 @@ export function Button({
     borderClassName,
     duration,
     className,
+    targetPath = "/",
     ...otherProps
 }: {
     borderRadius?: string;
@@ -28,10 +30,17 @@ export function Button({
     borderClassName?: string;
     duration?: number;
     className?: string;
+    targetPath?: string;
     [key: string]: any;
 }) {
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.push(targetPath); // Navigate to the specified path
+    };
     return (
         <Component
+            onClick={handleClick}
             className={cn(
                 // remove h-16 w-40, add  md:col-span-2
                 "bg-transparent relative text-xl p-[1px] overflow-hidden md:col-span-2 md:row-span-1",

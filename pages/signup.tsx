@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Label } from "../components/ui/Label";
 import { Input } from "../components/ui/Input";
 import { cn } from "@/utils/cn";
+
 import { useRouter } from "next/navigation"; // Correct import for client-side routing
 
 const SignUp: React.FC = () => {

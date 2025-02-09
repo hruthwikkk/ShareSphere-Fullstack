@@ -137,6 +137,7 @@ export const userOptions = [
         desc: "By choosing this option you can enlist items to lend, share knowledge or team up with people having same interests! The more you help the more trust points you earn",
         className: "md:col-span-2",
         thumbnail: "./exp1.svg",
+        path: "/help"
     },
     {
         id: 2,
@@ -146,6 +147,7 @@ export const userOptions = [
         desc: "By choosing this option you can get an item you need, learn something new and find a buddy with common interests.",
         className: "md:col-span-2",
         thumbnail: "./exp2.svg",
+        path: "/post"
     },
 ];
 
