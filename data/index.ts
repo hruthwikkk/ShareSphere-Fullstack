@@ -1,26 +1,23 @@
 export const navItems = [
-    { name: "About", link: "#about" },
-    { name: "Projects", link: "#projects" },
-    { name: "Testimonials", link: "#testimonials" },
-    { name: "Experience", link: "#experience" },
-    { name: "Resume", link: "#resume" },
-    { name: "Contact", link: "#contact" },
+    { name: "Post", link: "/post" },
+    { name: "Help", link: "/help" },
+    { name: "Profile", link: "/profile" },
 ];
 
 export const gridTitles = [
     {
         id: 1,
-        title: "I thrive on collaboration, ensuring seamless communication.",
+        title: "Gain trust and collect points as you support your community.",
         description: "",
         className: "lg:col-span-2 md:col-span-4 md:row-span-2 lg:min-h-[40vh]",
         imgClassName: "w-full h-full",
         titleClassName: "justify-end",
-        img: "./collab.lottie",
+        img: "./sharing.lottie",
         spareImg: "",
     },
     {
         id: 2,
-        title: "Flexible and adaptable to diverse time zones.",
+        title: "Lend a hand, get support, and save money.",
         description: "",
         className: "lg:col-span-1 md:col-span-2 md:row-span-1",
         imgClassName: "",
@@ -30,8 +27,8 @@ export const gridTitles = [
     },
     {
         id: 3,
-        title: "My tech stack is my toolkit.",
-        description: "I am constantly refining and expanding my skills.",
+        title: "Share and request items, study buddies, housing, and interests.",
+        description: "",
         className: "lg:col-span-1 md:col-span-3 md:row-span-1",
         imgClassName: "",
         titleClassName: "justify-center",
@@ -40,7 +37,7 @@ export const gridTitles = [
     },
     {
         id: 4,
-        title: "Tech enthusiast passionate about creating impactful solutions.",
+        title: "All your on-campus essentials, just a stone’s throw away.",
         description: "",
         className: "lg:col-span-1 md:col-span-2 md:row-span-1",
         imgClassName: "",
@@ -50,24 +47,14 @@ export const gridTitles = [
     },
     {
         id: 5,
-        title: "Currently building scalable and intelligent software solutions.",
-        description: "Innovating to simplify and empower.",
+        title: "Your NC State community: safe, trusted, and rewarding.",
+        description: "",
         className: "md:col-span-2 md:row-span-1",
-        imgClassName: "flex-shrink-0 right-0 bottom-0 w-full h-full",
+        imgClassName: "flex-shrink-0 right-0 bottom-0 w-3/4 h-3/4",
         titleClassName: "justify-center md:justify-start lg:justify-center",
-        img: "./growth.lottie",
+        img: "wolf.lottie",
         spareImg: "./grid.svg",
     },
-    {
-        id: 6,
-        title: "Want to collaborate and create impactful projects?",
-        description: "",
-        className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-        imgClassName: "",
-        titleClassName: "justify-center md:max-w-full max-w-60 text-center",
-        img: "",
-        spareImg: "",
-    }
 
 
 ];
