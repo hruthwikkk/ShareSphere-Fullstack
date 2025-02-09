@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "0ea0a466-0987-45f0-99a0-e0f9e90f9428",
+		"name": "ShareSphere",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31163165"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Owner One\",\n  \"age\": 21,\n  \"email\": \"owner1@university.edu\",\n  \"phone\": \"1112223333\",\n  \"password\": \"ownerPassword\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Requester One\",\n  \"age\": 22,\n  \"email\": \"requester1@university.edu\",\n  \"phone\": \"4445556666\",\n  \"password\": \"requesterPassword\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"owner1@university.edu\",\n  \"password\": \"ownerPassword\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"requester1@university.edu\",\n  \"password\": \"requesterPassword\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2N2E4MTRlMWVhNmQxYjc3MjAxYzAzZDciLCJlbWFpbCI6Im93bmVyMUB1bml2ZXJzaXR5LmVkdSIsImlhdCI6MTczOTA2OTEzMiwiZXhwIjoxNzM5NjczOTMyfQ.x_ssCLazNDXocshc6cXyy8LLsCfzCGTTTAjEBwrEGtc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2N2E4MTRlMWVhNmQxYjc3MjAxYzAzZDciLCJlbWFpbCI6Im93bmVyMUB1bml2ZXJzaXR5LmVkdSIsImlhdCI6MTczOTA2ODY3MSwiZXhwIjoxNzM5NjczNDcxfQ.8UWAPXzkELLfQfC41mYGulV04o_qUFxe6vcvSmwB6wU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"category\": \"item\",\n  \"title\": \"Universal Adapter\",\n  \"description\": \"A universal adapter for various devices.\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/listings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"listings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requests",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2N2E4MTRmMGVhNmQxYjc3MjAxYzAzZDgiLCJlbWFpbCI6InJlcXVlc3RlcjFAdW5pdmVyc2l0eS5lZHUiLCJpYXQiOjE3MzkwNjk2OTYsImV4cCI6MTczOTY3NDQ5Nn0.YF8fEulfCIG6NX6AqgDnQ-RASsj7TsOPRuUrZOqbwyo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"listingId\": \"67a818808ed42e4532f91e12\",\n  \"message\": \"I need this adapter for my laptop.\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notifications",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2N2E4MTRlMWVhNmQxYjc3MjAxYzAzZDciLCJlbWFpbCI6Im93bmVyMUB1bml2ZXJzaXR5LmVkdSIsImlhdCI6MTczOTA2OTEzMiwiZXhwIjoxNzM5NjczOTMyfQ.x_ssCLazNDXocshc6cXyy8LLsCfzCGTTTAjEBwrEGtc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"listingId\": \"67a818808ed42e4532f91e12\",\n  \"message\": \"I need this adapter for my laptop.\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/notifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notifications Read",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI2N2E4MTRlMWVhNmQxYjc3MjAxYzAzZDciLCJlbWFpbCI6Im93bmVyMUB1bml2ZXJzaXR5LmVkdSIsImlhdCI6MTczOTA2OTEzMiwiZXhwIjoxNzM5NjczOTMyfQ.x_ssCLazNDXocshc6cXyy8LLsCfzCGTTTAjEBwrEGtc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"listingId\": \"67a818808ed42e4532f91e12\",\n  \"message\": \"I need this adapter for my laptop.\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/notifications/67a819118ed42e4532f91e14/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notifications",
+						"67a819118ed42e4532f91e14",
+						"read"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
