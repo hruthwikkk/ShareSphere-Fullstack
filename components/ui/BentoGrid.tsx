@@ -9,8 +9,8 @@ import { Fascinate } from "next/font/google";
 import animationData from '@/data/confetti.json'
 import LitUpButton from "./litUpButton";
 
-const leftList = ["Python", "JavaScript", "TypeScript"]
-const rightList = ["Next.js", "React.js", "Node.js"]
+//const leftList = ["Realm of Artifacts","Fellowship of Scholars"]
+//const rightList = ["Enchanted Abodes", "Mystic Pastimes"]
 
 export const BentoGrid = ({
     className,
@@ -154,7 +154,7 @@ export const BentoGridItem = ({
                         <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
                             {/* tech stack lists */}
                             <div className="flex flex-col gap-2 md:gap-2 lg:gap-8">
-                                {leftList.map((item, i) => (
+                                {/*leftList.map((item, i) => (
                                     <span
                                         key={i}
                                         className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
@@ -162,12 +162,12 @@ export const BentoGridItem = ({
                                     >
                                         {item}
                                     </span>
-                                ))}
+                                ))*/}
                                 <span className="lg:py-4 lg:px-3 py-4 px-3 rounded-lg text-center bg-[#10132E]"></span>
                             </div>
                             <div className="flex flex-col gap-1 md:gap-2 lg:gap-8">
                                 <span className="lg:py-4 lg:px-3 py-3 px-2 rounded-lg text-center bg-[#10132E]"></span>
-                                {rightList.map((item, i) => (
+                                {/*rightList.map((item, i) => (
                                     <span
                                         key={i}
                                         className="lg:py-4 lg:px-3 py-2 px-3 text-pink-500 text-xs lg:text-base opacity-50 
@@ -175,10 +175,10 @@ export const BentoGridItem = ({
                                     >
                                         {item}
                                     </span>
-                                ))}
+                                ))*/}
                             </div>
                         </div>
-                    )}
+                                )}
                     {id === 6 &&
                         <div className="mt-5 relative">
                             <div className={`absolute -bottom-5 right-0`}>

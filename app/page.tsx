@@ -4,8 +4,8 @@ import Hero from "@/components/hero";
 import Grid from "@/components/grid";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { navItems } from "@/data";
-import SignUp from "@/pages/signup";
-import '@/app/globals.css';
+
+import Categories from "@/components/ui/Categories";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +35,7 @@ export default function Home() {
           <div className="max-w-7xl w-full">
             <Hero />
             <Grid />
-            <SignUp />
+            <Categories />
           </div>
         </>
       )}
