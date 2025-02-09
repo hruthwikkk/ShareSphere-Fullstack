@@ -129,42 +129,23 @@ export const companies = [
     },
 ];
 
-export const workExperience = [
+export const userOptions = [
     {
         id: 1,
-        title: "Software Engineer Intern",
-        company: "Toshiba Global Commerce  Solutions",
-        dates: "August 2024 - December 2024",
-        desc: "Enhanced MongoDB data access speed through API optimization and developed a Vue.js UI in a microservice environment with robust automated testing.",
+        title: "HELP SOMEONE",
+        company: "Make Someone's Day better",
+        desc: "By choosing this option you can enlist items to lend, share knowledge or team up with people having same interests! The more you help the more trust points you earn",
         className: "md:col-span-2",
         thumbnail: "./exp1.svg",
     },
     {
         id: 2,
-        title: "AI Software Engineer Intern",
-        company: "iSimcha LLC",
+        title: "REQUEST HELP",
+        company: "Is there someone who can help you",
         dates: "May 2024 - August 2024",
-        desc: "Built an LLM-based chatbot leveraging RAG and LangChain, achieving a 96% semantic similarity score and improving clinical trial usability filters by 15%.",
+        desc: "By choosing this option you can get an item you need, learn something new and find a buddy with common interests.",
         className: "md:col-span-2",
         thumbnail: "./exp2.svg",
-    },
-    {
-        id: 3,
-        title: "Software Engineer",
-        company: "Motorola Mobility",
-        dates: "October 2020 - June 2023",
-        desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-        className: "md:col-span-2",
-        thumbnail: "./exp3.svg",
-    },
-    {
-        id: 4,
-        title: "Software Engineer Intern",
-        company: "Motorola Mobility",
-        dates: "January 2020 - May 2020",
-        desc: "Developed and maintained user-facing features using modern frontend technologies.",
-        className: "md:col-span-2",
-        thumbnail: "./exp4.svg",
     },
 ];
 
