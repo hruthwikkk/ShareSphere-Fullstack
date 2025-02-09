@@ -1,5 +1,5 @@
 export const navItems = [
-    { name: "Post", link: "/post" },
+    { name: "Post", link: "/request" },
     { name: "Help", link: "/help" },
     { name: "Profile", link: "/profile" },
 ];
@@ -63,28 +63,28 @@ export const projects = [
     {
         id: 1,
         title: "Realm of Artifacts",
-        des: "Discover and share everyday essentials and unique finds with fellow NC State students. Whether you need a gadget, textbook, or personal item, connect locally to keep campus sustainable.",
+        des: "Discover and share essentials and unique finds with fellow NC State students.",
         img: "./items.jpg",
         link: "",
     },
     {
         id: 2,
         title: "Fellowship of Scholars",
-        des: "Find academic partners for tutoring, study sessions, and collaborative learning. Connect with peers who can support your educational journey and vice versa.",
+        des: "Find academic partners for tutoring, study sessions, and collaborative learning.",
         img: "./study.jpg",
         link: "",
     },
     {
         id: 3,
         title: "Enchanted Abodes",
-        des: "Browse and post housing options tailored for the NC State community. Whether you’re seeking a room, sublease, or roommate, find secure, nearby solutions.",
+        des: "Browse and post housing options tailored for the NC State community.",
         img: "./house.jpg",
         link: "",
     },
     {
         id: 4,
         title: "Mystic Pastimes",
-        des: "Explore and join groups centered on your passions and hobbies. Connect with students who share your interests to enrich your campus experience.",
+        des: "Explore and join groups centered on your passions and hobbies.",
         img: "./hobbies.jpg",
         link: "",
     },
