@@ -54,7 +54,7 @@ const ProfilePage: React.FC = () => {
                         <p className="mt-2 text-gray-300">
                             View and manage your current active requests.
                         </p>
-                        <button onClick={() => handleClick("/notifications")} className="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-md transition">
+                        <button onClick={() => handleClick("/notifications")} className="mt-4 bg-pink-400 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-md transition">
                             View Requests
                         </button>
                     </div>
@@ -65,7 +65,7 @@ const ProfilePage: React.FC = () => {
                         <p className="mt-2 text-gray-300">
                             View and manage items or services you have listed.
                         </p>
-                        <button onClick={() => handleClick("/notifications")} className="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-md transition">
+                        <button onClick={() => handleClick("/notifications")} className="mt-4 bg-pink-400 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-md transition">
                             View Listings
                         </button>
                     </div>

@@ -5,12 +5,12 @@ import { PinContainer } from './3d-pin'
 const Categories = () => {
     return (
         <section className='pt-15' id='projects'>
-            <div className='mt-10 pt-10'>
-                <h1 className='text-white heading mt-5 pt-5'>
-                    Explore Categories: {' '}
+            <div>
+                <h1 className='text-white text-6xl'>
+                    Explore Categories! {' '} <br></br>
                     <span className='text-pink-500'>Browse and share items, study buddies, housing, and more - securely and locally at NC State.</span>
                 </h1>
-                <div className='flex flex-wrap items-center justify-center px-4 py-4 pb-2 pt-2 gap-x-16 gap-y-2 mt-2'>
+                <div className='flex flex-wrap items-center justify-center px-2 py-2 pb-2 pt-2 gap-x-16 gap-y-2 mt-2'>
                     {projects.map((project) =>
                         <div key={project.id} className='sm:h-[30rem] h-[20rem] min-h-[20.5rem] flex items-center justify-center m-10 sm:w-[470px] w-[70vw]'>
                             <PinContainer href={project.link}>

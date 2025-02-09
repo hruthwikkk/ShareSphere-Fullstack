@@ -4,6 +4,7 @@ import { Label } from "../components/ui/Label";
 import { Input } from "../components/ui/Input";
 import { cn } from "@/utils/cn";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const Login: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const Login: React.FC = () => {
         });
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!formData.email.endsWith("@ncsu.edu")) {
@@ -32,8 +33,40 @@ const Login: React.FC = () => {
             return;
         }
 
-        console.log("Logging in with:", formData);
-        router.push("/homepage");
+        try {
+            // Send POST request to the backend /api/login endpoint
+            const response = await fetch("http://localhost:8080/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    password: formData.password,
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Login failed");
+            }
+
+            const result = await response.json();
+            console.log("Login successful:", result);
+
+            // Store the JWT token as a cookie
+            Cookies.set("token", result.token, {
+                expires: 7, // Cookie expires in 7 days
+                secure: true,
+                sameSite: "strict",
+            });
+
+            // Redirect to the homepage
+            router.push("/homepage");
+        } catch (error: any) {
+            console.error("Error during login:", error);
+            alert("Login failed: " + error.message);
+        }
     };
 
     return (

@@ -3,16 +3,16 @@ import React, { useState, useEffect } from "react";
 import { Label } from "../components/ui/Label";
 import { Input } from "../components/ui/Input";
 import { cn } from "@/utils/cn";
-
 import { useRouter } from "next/navigation"; // Correct import for client-side routing
+import Cookies from "js-cookie";
 
 const SignUp: React.FC = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        age: '',
-        email: '',
-        phone: '',
-        password: ''
+        name: "",
+        age: "",
+        email: "",
+        phone: "",
+        password: "",
     });
 
     const router = useRouter();
@@ -21,16 +21,16 @@ const SignUp: React.FC = () => {
         document.documentElement.classList.add("dark");
     }, []);
 
-    // New onChange handler to update form data properly
+    // Update form data on change
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         });
     };
 
-    // Handle form submission (for now, just logs and navigates)
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // Handle form submission
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // Validate that the email ends with '@ncsu.edu'
@@ -39,9 +39,45 @@ const SignUp: React.FC = () => {
             return;
         }
 
-        console.log("Submitting signup data:", formData);
-        // Redirect to home page (adjust as needed)
-        router.push("/home");
+        try {
+            // Send POST request to the backend /api/signup endpoint
+            const response = await fetch("http://localhost:8080/api/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                // Ensure age is sent as a number
+                body: JSON.stringify({
+                    name: formData.name,
+                    age: parseInt(formData.age, 10),
+                    email: formData.email,
+                    phone: formData.phone,
+                    password: formData.password,
+                }),
+            });
+
+            if (!response.ok) {
+                // Try to extract an error message from the response
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Signup failed");
+            }
+
+            const result = await response.json();
+            console.log("Signup successful:", result);
+
+            // Store the JWT token as a cookie. Customize options as needed.
+            Cookies.set("token", result.token, {
+                expires: 7, // expires in 7 days
+                secure: true,
+                sameSite: "strict",
+            });
+
+            // Redirect to home page (adjust as needed)
+            router.push("/homepage");
+        } catch (error: any) {
+            console.error("Error during signup:", error);
+            alert("Signup failed: " + error.message);
+        }
     };
 
     return (
@@ -80,7 +116,9 @@ const SignUp: React.FC = () => {
                         </LabelInputContainer>
                     </div>
                     <LabelInputContainer className="mb-4">
-                        <Label htmlFor="email">Email Address (only @ncsu.edu allowed)</Label>
+                        <Label htmlFor="email">
+                            Email Address (only @ncsu.edu allowed)
+                        </Label>
                         <Input
                             id="email"
                             name="email"
@@ -114,7 +152,7 @@ const SignUp: React.FC = () => {
                     </LabelInputContainer>
 
                     <button
-                        className="bg-gradient-to-br from-black to-neutral-600 w-full text-white rounded-md h-10 font-medium shadow-md hover:bg-gray-800 transition"
+                        className="bg-gradient-to-br from-black to-neutral-600 w-full text-white rounded-md h-10 font-medium shadow-md hover:bg-gray-800 transition relative"
                         type="submit"
                     >
                         Sign up &rarr;
@@ -133,18 +171,27 @@ const BottomGradient = () => (
     </>
 );
 
-const LabelInputContainer: React.FC<{ children: React.ReactNode; className?: string }> = ({
-    children,
-    className,
-}) => <div className={cn("flex flex-col space-y-2 w-full", className)}>{children}</div>;
+const LabelInputContainer: React.FC<{
+    children: React.ReactNode;
+    className?: string;
+}> = ({ children, className }) => (
+    <div className={cn("flex flex-col space-y-2 w-full", className)}>
+        {children}
+    </div>
+);
 
-const OAuthButton: React.FC<{ icon: React.ReactNode; label: string }> = ({ icon, label }) => (
+const OAuthButton: React.FC<{ icon: React.ReactNode; label: string }> = ({
+    icon,
+    label,
+}) => (
     <button
         className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 hover:bg-gray-100 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)] transition"
         type="button"
     >
         {icon}
-        <span className="text-neutral-700 dark:text-neutral-300 text-sm">{label}</span>
+        <span className="text-neutral-700 dark:text-neutral-300 text-sm">
+            {label}
+        </span>
         <BottomGradient />
     </button>
 );

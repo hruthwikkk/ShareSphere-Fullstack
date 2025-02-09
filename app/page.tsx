@@ -34,7 +34,6 @@ export default function Home() {
           </div>
           <div className="max-w-7xl w-full">
             <Hero />
-            <Grid />
             <Categories />
           </div>
         </>
