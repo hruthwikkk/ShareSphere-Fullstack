@@ -24,7 +24,7 @@ const Hero = () => {
                         ShareSphere is your enchanted hub for sharing resources, skills, and opportunities across campus.
                         </p>
                         <a href='#about'>
-                            <span className='m-8'><LitUpButton title="Sign Up" position='right'/></span>
+                            <a href='/signup'>< span className='m-8'><LitUpButton title="Sign Up" position='right' onClick/></span></a>
                             <span className='m-8'><LitUpButton title="Login" position='right'/></span>
                         </a>
                     </div>
