@@ -1,142 +1,92 @@
 "use client";
-import Image from "next/image";
-import React, { useEffect, useId, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useOutsideClick } from "@/components/ui/use-outside-click";
+import React, { useEffect, useId, useState } from "react";
+import { motion } from "framer-motion";
 
-const notifications: React.FC = () => {
-  const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
-    null
-  );
-  const ref = useRef<HTMLDivElement>(null);
+const Notifications: React.FC = () => {
+  const [active, setActive] = useState<(typeof initialCards)[number] | boolean | null>(null);
+  const [cards, setCards] = useState(initialCards); // State for cards
+  const [showPopup, setShowPopup] = useState(false);
   const id = useId();
 
   useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setActive(false);
-      }
-    }
-
-    if (active && typeof active === "object") {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "hidden";
-    }
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    document.body.style.overflow = active ? "hidden" : "auto";
   }, [active]);
 
-  useOutsideClick(ref, () => setActive(null));
+  const handleAccept = () => {
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 3000); // Hide popup after 3 seconds
+  };
+
+  const handleReject = (index: number) => {
+    setCards((prevCards) => prevCards.filter((_, i) => i !== index)); // Remove the card from the list
+  };
 
   return (
-    <>
-      {/* <AnimatePresence>
-        {active && typeof active === "object" && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full w-full z-10"
-          />
-        )}
-      </AnimatePresence> */}
-      
-      <ul className="max-w-2xl mx-auto w-full gap-4">
+    <div className="min-h-screen bg-black text-white">
+      <h1 className="text-4xl font-extrabold text-center py-8">Notifications</h1>
+
+      {/* Popup positioned at the bottom-right */}
+      {showPopup && (
+        <motion.div
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 10 }}
+          className="fixed bottom-10 right-10 px-6 py-3 bg-green-600 text-white font-bold rounded-lg shadow-lg z-50"
+        >
+          10 points added!
+        </motion.div>
+      )}
+
+      <ul className="max-w-3xl mx-auto w-full space-y-6">
         {cards.map((card, index) => (
           <motion.div
             layoutId={`card-${card.title}-${id}`}
             key={`card-${card.title}-${id}`}
-            onClick={() => setActive(card)}
-            className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
+            className="p-6 bg-neutral-800 border border-white/10 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300"
           >
-            <div className="flex gap-4 flex-col md:flex-row ">
-              <motion.div layoutId={`image-${card.title}-${id}`}>
-                <Image
-                  width={100}
-                  height={100}
-                  src={card.src}
-                  alt={card.title}
-                  className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
-                />
-              </motion.div>
-              <div className="">
-                <motion.h3
-                  layoutId={`title-${card.title}-${id}`}
-                  className="font-medium text-neutral-800 dark:text-neutral-200 text-center md:text-left"
+            <div className="flex flex-col items-center gap-4">
+              <motion.h3
+                layoutId={`title-${card.title}-${id}`}
+                className="font-bold text-xl text-white text-center"
+              >
+                {card.title}
+              </motion.h3>
+              <motion.p
+                layoutId={`description-${card.description}-${id}`}
+                className="text-neutral-400 text-center"
+              >
+                {card.description}
+              </motion.p>
+              <div className="flex items-center justify-center space-x-4">
+                <motion.button
+                  layoutId={`accept-button-${card.title}-${id}`}
+                  className="px-6 py-3 text-sm rounded-full font-bold bg-green-500 hover:bg-green-600 text-white shadow-md transition-all duration-200"
+                  onClick={handleAccept}
                 >
-                  {card.title}
-                </motion.h3>
-                <motion.p
-                  layoutId={`description-${card.description}-${id}`}
-                  className="text-neutral-600 dark:text-neutral-400 text-center md:text-left"
+                  {card.ctaText}
+                </motion.button>
+                <motion.button
+                  layoutId={`reject-button-${card.title}-${id}`}
+                  className="px-6 py-3 text-sm rounded-full font-bold bg-red-500 hover:bg-red-600 text-white shadow-md transition-all duration-200"
+                  onClick={() => handleReject(index)}
                 >
-                  {card.description}
-                </motion.p>
+                  {card.rejectText}
+                </motion.button>
               </div>
             </div>
-            <div className="flex items-center space-x-2">
-            <motion.button
-            layoutId={`button-${card.title}-${id}`}
-            className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-green-500 hover:text-white text-black"
-            >
-            {card.ctaText}
-            </motion.button>
-            <motion.button
-                layoutId={`button-${card.title}-${id}`}
-                className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-red-500 hover:text-white text-black"
-            >
-            {card.rejectText}
-            </motion.button>
-</div>
           </motion.div>
         ))}
       </ul>
-    </>
-  );
-}
-
-export const CloseIcon = () => {
-  return (
-    <motion.svg
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.05,
-        },
-      }}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4 text-black"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M18 6l-12 12" />
-      <path d="M6 6l12 12" />
-    </motion.svg>
+    </div>
   );
 };
 
-const cards = [
+const initialCards = [
   {
     description: "Items",
-    title: "Harry is requesting a HDMI cable for 2 days",
+    title: "Harry is requesting an HDMI cable for 2 days",
     ctaText: "Accept",
     rejectText: "Reject",
-
   },
   {
     description: "Items",
@@ -144,7 +94,6 @@ const cards = [
     ctaText: "Accept",
     rejectText: "Reject",
   },
-
   {
     description: "Interests",
     title: "Luna is requesting a badminton match",
@@ -153,7 +102,7 @@ const cards = [
   },
   {
     description: "Housing",
-    title: "Hermoine is looking for a tenant to sublease her room",
+    title: "Hermione is looking for a tenant to sublease her room",
     ctaText: "Accept",
     rejectText: "Reject",
   },
@@ -165,4 +114,4 @@ const cards = [
   },
 ];
 
-export default notifications;
+export default Notifications;
