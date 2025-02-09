@@ -66,7 +66,7 @@ export const projects = [
         title: "Realm of Artifacts",
         des: "Discover and share essentials and unique finds with fellow NC State students.",
         img: "./items.jpg",
-        link: "",
+        link: "/list",
     },
     {
         id: 2,
