@@ -1,13 +1,23 @@
 "use client";
+import { Url } from "next/dist/shared/lib/router/router";
+import { useRouter } from "next/router";
 import React from "react";
 
 const ProfilePage: React.FC = () => {
+
     const user = {
         name: "John Doe",
         email: "john.doe@ncsu.edu",
         phone: "+1 (123) 456-7890",
         points: 1200,
     };
+
+    const router = useRouter();
+
+    const handleClick = (targetPath: string) => {
+        router.push(targetPath); // Navigate to the specified path
+    };
+
 
     return (
         <div className="min-h-screen bg-dark-900 p-8">
@@ -44,7 +54,7 @@ const ProfilePage: React.FC = () => {
                         <p className="mt-2 text-gray-300">
                             View and manage your current active requests.
                         </p>
-                        <button className="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-md transition">
+                        <button onClick={() => handleClick("/notifications")} className="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-md transition">
                             View Requests
                         </button>
                     </div>
@@ -55,7 +65,7 @@ const ProfilePage: React.FC = () => {
                         <p className="mt-2 text-gray-300">
                             View and manage items or services you have listed.
                         </p>
-                        <button className="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-md transition">
+                        <button onClick={() => handleClick("/notifications")} className="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-md transition">
                             View Listings
                         </button>
                     </div>
