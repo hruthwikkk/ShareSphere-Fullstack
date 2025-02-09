@@ -2,6 +2,7 @@ export const navItems = [
     { name: "Post", link: "/post" },
     { name: "Help", link: "/help" },
     { name: "Profile", link: "/profile" },
+    { name: "Notifications", link: "/notifications" },
 ];
 
 export const gridTitles = [
